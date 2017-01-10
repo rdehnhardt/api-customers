@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 use Domain\Entity\Customer;
 
 class MethodsExistsInCustomerTest extends TestCase

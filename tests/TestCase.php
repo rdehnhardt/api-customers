@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Foundation\Testing\TestCase as BaseTest;
 
 abstract class TestCase extends BaseTest
