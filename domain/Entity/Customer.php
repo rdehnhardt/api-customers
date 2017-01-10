@@ -15,14 +15,19 @@ class Customer
     private $id;
 
     /**
-     * @var StringLiteral
-     */
-    private $name;
-
-    /**
      * @var DocumentType
      */
     private $document_type;
+
+    /**
+     * @var StringLiteral
+     */
+    private $code;
+
+    /**
+     * @var StringLiteral
+     */
+    private $name;
 
     /**
      * @return Integer
@@ -44,25 +49,6 @@ class Customer
     }
 
     /**
-     * @return StringLiteral
-     */
-    public function getName(): StringLiteral
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->name = new StringLiteral($name);
-
-        return $this;
-    }
-
-    /**
      * @return DocumentType
      */
     public function getDocumentType(): DocumentType
@@ -77,6 +63,44 @@ class Customer
     public function setDocumentType(DocumentType $document_type): self
     {
         $this->document_type = $document_type;
+
+        return $this;
+    }
+
+    /**
+     * @return StringLiteral
+     */
+    public function getCode(): StringLiteral
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     * @return self
+     */
+    public function setCode(string $code): self
+    {
+        $this->code = new StringLiteral($code);
+
+        return $this;
+    }
+
+    /**
+     * @return StringLiteral
+     */
+    public function getName(): StringLiteral
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return self
+     */
+    public function setName(string $name): self
+    {
+        $this->name = new StringLiteral($name);
 
         return $this;
     }

@@ -14,6 +14,9 @@ class MethodsExistsInCustomerTest extends TestCase
         $this->assertTrue(method_exists(Customer::class, 'getDocumentType'));
         $this->assertTrue(method_exists(Customer::class, 'setDocumentType'));
 
+        $this->assertTrue(method_exists(Customer::class, 'getCode'));
+        $this->assertTrue(method_exists(Customer::class, 'setCode'));
+
         $this->assertTrue(method_exists(Customer::class, 'getName'));
         $this->assertTrue(method_exists(Customer::class, 'setName'));
     }
