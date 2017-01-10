@@ -2,13 +2,13 @@
 
 namespace Domain\Entity;
 
-use ValueObjects\Identity\UUID;
+use ValueObjects\Number\Integer;
 use ValueObjects\StringLiteral\StringLiteral;
 
 class Customer
 {
     /**
-     * @var UUID
+     * @var Integer
      */
     private $id;
 
@@ -18,20 +18,20 @@ class Customer
     private $name;
 
     /**
-     * @return UUID
+     * @return Integer
      */
-    public function getId(): UUID
+    public function getId(): Integer
     {
         return $this->id;
     }
 
     /**
-     * @param UUID $id
+     * @param int $id
      * @return self
      */
-    public function setId(UUID $id): self
+    public function setId(int $id): self
     {
-        $this->id = $id;
+        $this->id = new Integer($id);
 
         return $this;
     }
@@ -45,12 +45,12 @@ class Customer
     }
 
     /**
-     * @param StringLiteral $name
+     * @param string $name
      * @return self
      */
-    public function setName($name): self
+    public function setName(string $name): self
     {
-        $this->name = $name;
+        $this->name = new StringLiteral($name);
 
         return $this;
     }
