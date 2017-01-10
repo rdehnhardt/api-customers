@@ -20,6 +20,11 @@ class Customer
     private $name;
 
     /**
+     * @var DocumentType
+     */
+    private $document_type;
+
+    /**
      * @return Integer
      */
     public function getId(): Integer
@@ -53,6 +58,25 @@ class Customer
     public function setName(string $name): self
     {
         $this->name = new StringLiteral($name);
+
+        return $this;
+    }
+
+    /**
+     * @return DocumentType
+     */
+    public function getDocumentType(): DocumentType
+    {
+        return $this->document_type;
+    }
+
+    /**
+     * @param DocumentType $document_type
+     * @return self
+     */
+    public function setDocumentType(DocumentType $document_type): self
+    {
+        $this->document_type = $document_type;
 
         return $this;
     }
