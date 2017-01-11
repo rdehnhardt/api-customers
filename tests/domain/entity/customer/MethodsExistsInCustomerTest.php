@@ -19,5 +19,8 @@ class MethodsExistsInCustomerTest extends TestCase
 
         $this->assertTrue(method_exists(Customer::class, 'getBornIn'));
         $this->assertTrue(method_exists(Customer::class, 'setBornIn'));
+
+        $this->assertTrue(method_exists(Customer::class, 'getGender'));
+        $this->assertTrue(method_exists(Customer::class, 'setGender'));
     }
 }

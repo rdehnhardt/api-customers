@@ -31,6 +31,11 @@ class Customer extends DataEntity
     private $born_in;
 
     /**
+     * @var Gender
+     */
+    private $gender;
+
+    /**
      * @return Integer
      */
     public function getId(): Integer
@@ -102,6 +107,25 @@ class Customer extends DataEntity
     public function setBornIn(Carbon $born_in): self
     {
         $this->born_in = $born_in;
+
+        return $this;
+    }
+
+    /**
+     * @return Gender
+     */
+    public function getGender(): Gender
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param Gender $gender
+     * @return self
+     */
+    public function setGender(Gender $gender): self
+    {
+        $this->gender = $gender;
 
         return $this;
     }
