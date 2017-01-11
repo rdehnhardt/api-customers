@@ -24,6 +24,14 @@ class DocumentTypeEntityTest extends TestCase
     }
 
     /**
+     * Check if class exists
+     */
+    public function testClassExists()
+    {
+        $this->assertInstanceOf(DocumentType::class, new DocumentType);
+    }
+
+    /**
      * Check id methods should by Integer
      */
     public function testIdValue()

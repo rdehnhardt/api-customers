@@ -26,6 +26,14 @@ class CustomerEntityTest extends TestCase
     }
 
     /**
+     * Check class exists
+     */
+    public function testClassExists()
+    {
+        $this->assertInstanceOf(Customer::class, new Customer);
+    }
+
+    /**
      * Check id methods should by Integer
      */
     public function testIdValue()
