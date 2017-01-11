@@ -4,11 +4,10 @@ declare(strict_types = 1);
 
 namespace Domain\Entity;
 
-use Carbon\Carbon;
 use ValueObjects\Number\Integer;
 use ValueObjects\StringLiteral\StringLiteral;
 
-class Customer extends DataEntity
+class Gender extends DataEntity
 {
     /**
      * @var Integer
@@ -18,17 +17,12 @@ class Customer extends DataEntity
     /**
      * @var StringLiteral
      */
-    private $code;
+    private $name;
 
     /**
      * @var StringLiteral
      */
-    private $name;
-
-    /**
-     * @var Carbon
-     */
-    private $born_in;
+    private $slug;
 
     /**
      * @return Integer
@@ -52,25 +46,6 @@ class Customer extends DataEntity
     /**
      * @return StringLiteral
      */
-    public function getCode(): StringLiteral
-    {
-        return $this->code;
-    }
-
-    /**
-     * @param string $code
-     * @return self
-     */
-    public function setCode(string $code): self
-    {
-        $this->code = new StringLiteral($code);
-
-        return $this;
-    }
-
-    /**
-     * @return StringLiteral
-     */
     public function getName(): StringLiteral
     {
         return $this->name;
@@ -83,26 +58,16 @@ class Customer extends DataEntity
     public function setName(string $name): self
     {
         $this->name = new StringLiteral($name);
+        $this->slug = new StringLiteral(str_slug($this->name));
 
         return $this;
     }
 
     /**
-     * @return Carbon
+     * @return StringLiteral
      */
-    public function getBornIn(): Carbon
+    public function getSlug(): StringLiteral
     {
-        return $this->born_in;
-    }
-
-    /**
-     * @param Carbon $born_in
-     * @return self
-     */
-    public function setBornIn(Carbon $born_in): self
-    {
-        $this->born_in = $born_in;
-
-        return $this;
+        return $this->slug;
     }
 }
