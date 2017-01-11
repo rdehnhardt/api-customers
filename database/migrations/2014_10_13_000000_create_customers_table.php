@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCustomersTable extends Migration
 {
@@ -15,13 +17,14 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('document_type_id')->unsigned();
             $table->string('code');
             $table->string('name');
+            $table->timestamp('born_in');
+            $table->integer('gender_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('document_type_id')->references('id')->on('document_types');
+            $table->foreign('gender_id')->references('id')->on('genders');
         });
     }
 
