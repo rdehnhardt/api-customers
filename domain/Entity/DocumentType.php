@@ -62,17 +62,6 @@ class DocumentType
     }
 
     /**
-     * @param string $slug
-     * @return self
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = new StringLiteral($slug);
-
-        return $this;
-    }
-
-    /**
      * @return StringLiteral
      */
     public function getName(): StringLiteral
@@ -86,6 +75,7 @@ class DocumentType
      */
     public function setName(string $name): self
     {
+        $this->slug = new StringLiteral(str_slug($name));
         $this->name = new StringLiteral($name);
 
         return $this;
