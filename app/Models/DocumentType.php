@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class DocumentType
+use Illuminate\Database\Eloquent\Model;
+
+class DocumentType extends Model
 {
 }

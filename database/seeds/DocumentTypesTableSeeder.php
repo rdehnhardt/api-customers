@@ -14,8 +14,11 @@ class DocumentTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(DocumentType::class, 10)->create()->each(function (DocumentType $documentType) {
-            $documentType->customers()->save(factory(App\Models\Customer::class)->make());
-        });
+        $type = new DocumentType();
+        $type->slug = 'cpf';
+        $type->name = 'CPF';
+        $type->mask = '999.999.999-99';
+        $type->country = 'BR';
+        $type->save();
     }
 }
