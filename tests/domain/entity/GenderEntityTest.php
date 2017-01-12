@@ -3,8 +3,6 @@
 declare(strict_types = 1);
 
 use Domain\Entity\Gender;
-use ValueObjects\Number\Integer;
-use ValueObjects\StringLiteral\StringLiteral;
 
 class MethodsExistsInGenderTest extends TestCase
 {
@@ -37,7 +35,7 @@ class MethodsExistsInGenderTest extends TestCase
     public function testIdValue()
     {
         $this->assertInstanceOf(Gender::class, $this->entity->setId(1));
-        $this->assertInstanceOf(Integer::class, $this->entity->getId());
+        $this->assertTrue(is_int($this->entity->getId()));
     }
 
     /**
@@ -46,7 +44,7 @@ class MethodsExistsInGenderTest extends TestCase
     public function testNameValue()
     {
         $this->assertInstanceOf(Gender::class, $this->entity->setName('PASSPORT'));
-        $this->assertInstanceOf(StringLiteral::class, $this->entity->getName());
+        $this->assertTrue(is_string($this->entity->getName()));
     }
 
     /**
@@ -64,6 +62,6 @@ class MethodsExistsInGenderTest extends TestCase
     {
         $this->entity->setName('CHECK SLUG');
 
-        $this->assertSame(str_slug('CHECK SLUG'), $this->entity->getSlug()->toNative());
+        $this->assertSame(str_slug('CHECK SLUG'), $this->entity->getSlug());
     }
 }

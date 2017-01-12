@@ -4,30 +4,27 @@ declare(strict_types = 1);
 
 namespace Domain\Entity;
 
-use ValueObjects\Number\Integer;
-use ValueObjects\StringLiteral\StringLiteral;
-
 class Gender extends DataEntity
 {
     /**
-     * @var Integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var StringLiteral
+     * @var string
      */
     private $name;
 
     /**
-     * @var StringLiteral
+     * @var string
      */
     private $slug;
 
     /**
-     * @return Integer
+     * @return int
      */
-    public function getId(): Integer
+    public function getId(): int
     {
         return $this->id;
     }
@@ -38,15 +35,15 @@ class Gender extends DataEntity
      */
     public function setId(int $id): self
     {
-        $this->id = new Integer($id);
+        $this->id = $id;
 
         return $this;
     }
 
     /**
-     * @return StringLiteral
+     * @return string
      */
-    public function getName(): StringLiteral
+    public function getName(): string
     {
         return $this->name;
     }
@@ -57,16 +54,16 @@ class Gender extends DataEntity
      */
     public function setName(string $name): self
     {
-        $this->name = new StringLiteral($name);
-        $this->slug = new StringLiteral(str_slug($this->name));
+        $this->slug = str_slug($name);
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * @return StringLiteral
+     * @return string
      */
-    public function getSlug(): StringLiteral
+    public function getSlug(): string
     {
         return $this->slug;
     }

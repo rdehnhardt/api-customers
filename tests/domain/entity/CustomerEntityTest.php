@@ -3,11 +3,10 @@
 declare(strict_types = 1);
 
 use Carbon\Carbon;
-use Domain\Entity\Document;
 use Domain\Entity\Customer;
+use Domain\Entity\Document;
+use Domain\Entity\DocumentType;
 use Domain\Entity\Gender;
-use ValueObjects\Number\Integer;
-use ValueObjects\StringLiteral\StringLiteral;
 
 class CustomerEntityTest extends TestCase
 {
@@ -39,8 +38,8 @@ class CustomerEntityTest extends TestCase
      */
     public function testIdValue()
     {
-        $this->assertInstanceOf(Customer::class, $this->entity->setId(new Integer(1)));
-        $this->assertInstanceOf(Integer::class, $this->entity->getId());
+        $this->assertInstanceOf(Customer::class, $this->entity->setId(1));
+        $this->assertTrue(is_int($this->entity->getId()));
     }
 
     /**
@@ -48,8 +47,8 @@ class CustomerEntityTest extends TestCase
      */
     public function testCodeValue()
     {
-        $this->assertInstanceOf(Customer::class, $this->entity->setCode(new StringLiteral('XPTO')));
-        $this->assertInstanceOf(StringLiteral::class, $this->entity->getCode());
+        $this->assertInstanceOf(Customer::class, $this->entity->setCode('XPTO'));
+        $this->assertTrue(is_string($this->entity->getCode()));
     }
 
     /**
@@ -57,8 +56,8 @@ class CustomerEntityTest extends TestCase
      */
     public function testNameValue()
     {
-        $this->assertInstanceOf(Customer::class, $this->entity->setName(new StringLiteral('MY NAME IS BOND!')));
-        $this->assertInstanceOf(StringLiteral::class, $this->entity->getName());
+        $this->assertInstanceOf(Customer::class, $this->entity->setName('MY NAME IS BOND!'));
+        $this->assertTrue(is_string($this->entity->getName()));
     }
 
     /**
@@ -93,5 +92,41 @@ class CustomerEntityTest extends TestCase
         $this->assertInstanceOf(Customer::class, $this->entity->addDocument($document));
         $this->assertInstanceOf(Customer::class, $this->entity->removeDocument($document));
         $this->assertTrue(is_array($this->entity->getDocuments()));
+    }
+
+    /**
+     * Get document by slug
+     * @dataProvider provideDocuments
+     * @param $name
+     * @param $mask
+     * @param $country
+     * @param $number
+     */
+    public function testGetDocumentBySlug($name, $mask, $country, $number)
+    {
+        $type = new DocumentType();
+        $type->setName($name);
+        $type->setMask($mask);
+        $type->setCountry($country);
+
+        $document = new Document;
+        $document->setId(1);
+        $document->setType($type);
+        $document->setNumber($number);
+
+        $customer = new Customer();
+        $customer->addDocument($document);
+
+        $get = $customer->getDocumentBySlug(str_slug($name));
+
+        $this->assertSame(str_slug($name), $get->getType()->getSlug());
+    }
+
+    public function provideDocuments()
+    {
+        return [
+            ['CPF', '999.999.999-99', 'BR', '123.123.123-12'],
+            ['RG', '9999999999', 'BR', '1234567890'],
+        ];
     }
 }

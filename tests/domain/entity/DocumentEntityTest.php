@@ -4,8 +4,6 @@ declare(strict_types = 1);
 
 use Domain\Entity\Document;
 use Domain\Entity\DocumentType;
-use ValueObjects\Number\Integer;
-use ValueObjects\StringLiteral\StringLiteral;
 
 class DocumentEntityTest extends TestCase
 {
@@ -37,8 +35,8 @@ class DocumentEntityTest extends TestCase
      */
     public function testIdValue()
     {
-        $this->assertInstanceOf(Document::class, $this->entity->setId(new Integer(1)));
-        $this->assertInstanceOf(Integer::class, $this->entity->getId());
+        $this->assertInstanceOf(Document::class, $this->entity->setId(1));
+        $this->assertTrue(is_int($this->entity->getId()));
     }
 
     /**
@@ -46,8 +44,8 @@ class DocumentEntityTest extends TestCase
      */
     public function testNumberValue()
     {
-        $this->assertInstanceOf(Document::class, $this->entity->setNumber(new StringLiteral('999999999')));
-        $this->assertInstanceOf(StringLiteral::class, $this->entity->getNumber());
+        $this->assertInstanceOf(Document::class, $this->entity->setNumber('999999999'));
+        $this->assertTrue(is_string($this->entity->getNumber()));
     }
 
     /**

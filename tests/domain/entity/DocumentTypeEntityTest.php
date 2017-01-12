@@ -3,8 +3,6 @@
 declare(strict_types = 1);
 
 use Domain\Entity\DocumentType;
-use ValueObjects\Number\Integer;
-use ValueObjects\StringLiteral\StringLiteral;
 
 class DocumentTypeEntityTest extends TestCase
 {
@@ -36,8 +34,8 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testIdValue()
     {
-        $this->assertInstanceOf(DocumentType::class, $this->entity->setId(new Integer(1)));
-        $this->assertInstanceOf(Integer::class, $this->entity->getId());
+        $this->assertInstanceOf(DocumentType::class, $this->entity->setId(1));
+        $this->assertTrue(is_int($this->entity->getId()));
     }
 
     /**
@@ -45,8 +43,8 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testNameValue()
     {
-        $this->assertInstanceOf(DocumentType::class, $this->entity->setName(new StringLiteral('PASSPORT')));
-        $this->assertInstanceOf(StringLiteral::class, $this->entity->getName());
+        $this->assertInstanceOf(DocumentType::class, $this->entity->setName('PASSPORT'));
+        $this->assertTrue(is_string($this->entity->getName()));
     }
 
     /**
@@ -54,8 +52,8 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testMaskValue()
     {
-        $this->assertInstanceOf(DocumentType::class, $this->entity->setMask(new StringLiteral('99.99.999')));
-        $this->assertInstanceOf(StringLiteral::class, $this->entity->getMask());
+        $this->assertInstanceOf(DocumentType::class, $this->entity->setMask('99.99.999'));
+        $this->assertTrue(is_string($this->entity->getMask()));
     }
 
     /**
@@ -63,8 +61,8 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testCountryValue()
     {
-        $this->assertInstanceOf(DocumentType::class, $this->entity->setCountry(new StringLiteral('BR')));
-        $this->assertInstanceOf(StringLiteral::class, $this->entity->getCountry());
+        $this->assertInstanceOf(DocumentType::class, $this->entity->setCountry('BR'));
+        $this->assertTrue(is_string($this->entity->getCountry()));
     }
 
     /**
@@ -80,8 +78,8 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testCheckIfSlugIsSlugfyOfName()
     {
-        $this->entity->setName(new StringLiteral('CHECK SLUG'));
+        $this->entity->setName('CHECK SLUG');
 
-        $this->assertSame(str_slug('CHECK SLUG'), $this->entity->getSlug()->toNative());
+        $this->assertSame(str_slug('CHECK SLUG'), $this->entity->getSlug());
     }
 }

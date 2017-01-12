@@ -5,23 +5,21 @@ declare(strict_types = 1);
 namespace Domain\Entity;
 
 use Carbon\Carbon;
-use ValueObjects\Number\Integer;
-use ValueObjects\StringLiteral\StringLiteral;
 
 class Customer extends DataEntity
 {
     /**
-     * @var Integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var StringLiteral
+     * @var string
      */
     private $code;
 
     /**
-     * @var StringLiteral
+     * @var string
      */
     private $name;
 
@@ -43,16 +41,16 @@ class Customer extends DataEntity
     /**
      * @return Integer
      */
-    public function getId(): Integer
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * @param Integer $id
+     * @param int $id
      * @return self
      */
-    public function setId(Integer $id): self
+    public function setId(int $id): self
     {
         $this->id = $id;
 
@@ -60,18 +58,18 @@ class Customer extends DataEntity
     }
 
     /**
-     * @return StringLiteral
+     * @return string
      */
-    public function getCode(): StringLiteral
+    public function getCode(): string
     {
         return $this->code;
     }
 
     /**
-     * @param StringLiteral $code
+     * @param string $code
      * @return self
      */
-    public function setCode(StringLiteral $code): self
+    public function setCode(string $code): self
     {
         $this->code = $code;
 
@@ -79,18 +77,18 @@ class Customer extends DataEntity
     }
 
     /**
-     * @return StringLiteral
+     * @return string
      */
-    public function getName(): StringLiteral
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * @param StringLiteral $name
+     * @param string $name
      * @return self
      */
-    public function setName(StringLiteral $name): self
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -149,7 +147,7 @@ class Customer extends DataEntity
      */
     public function addDocument(Document $document): self
     {
-        $this->documents[$document->getId()->toNative()] = $document;
+        $this->documents[$document->getId()] = $document;
 
         return $this;
     }
@@ -160,8 +158,21 @@ class Customer extends DataEntity
      */
     public function removeDocument(Document $document): self
     {
-        unset($this->documents[$document->getId()->toNative()]);
+        unset($this->documents[$document->getId()]);
 
         return $this;
+    }
+
+    /**
+     * @param string $slug
+     * @return Document
+     */
+    public function getDocumentBySlug(string $slug): Document
+    {
+        return current(array_map(function ($document) use ($slug) {
+            if ($document->getType()->getSlug() === $slug) {
+                return $document;
+            }
+        }, $this->documents));
     }
 }

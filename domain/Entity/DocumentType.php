@@ -4,49 +4,46 @@ declare(strict_types = 1);
 
 namespace Domain\Entity;
 
-use ValueObjects\Number\Integer;
-use ValueObjects\StringLiteral\StringLiteral;
-
 class DocumentType
 {
     /**
-     * @var Integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var StringLiteral
+     * @var string
      */
     private $slug;
 
     /**
-     * @var StringLiteral
+     * @var string
      */
     private $name;
 
     /**
-     * @var StringLiteral
+     * @var string
      */
     private $mask;
 
     /**
-     * @var StringLiteral
+     * @var string
      */
     private $country;
 
     /**
-     * @return Integer
+     * @return int
      */
-    public function getId(): Integer
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * @param Integer $id
+     * @param int $id
      * @return self
      */
-    public function setId(Integer $id): self
+    public function setId(int $id): self
     {
         $this->id = $id;
 
@@ -54,46 +51,46 @@ class DocumentType
     }
 
     /**
-     * @return StringLiteral
+     * @return string
      */
-    public function getSlug(): StringLiteral
+    public function getSlug(): string
     {
         return $this->slug;
     }
 
     /**
-     * @return StringLiteral
+     * @return string
      */
-    public function getName(): StringLiteral
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * @param StringLiteral $name
+     * @param string $name
      * @return self
      */
-    public function setName(StringLiteral $name): self
+    public function setName(string $name): self
     {
-        $this->slug = new StringLiteral(str_slug($name->toNative()));
+        $this->slug = str_slug($name);
         $this->name = $name;
 
         return $this;
     }
 
     /**
-     * @return StringLiteral
+     * @return string
      */
-    public function getMask(): StringLiteral
+    public function getMask(): string
     {
         return $this->mask;
     }
 
     /**
-     * @param StringLiteral $mask
+     * @param string $mask
      * @return DocumentType
      */
-    public function setMask(StringLiteral $mask): self
+    public function setMask(string $mask): self
     {
         $this->mask = $mask;
 
@@ -101,18 +98,18 @@ class DocumentType
     }
 
     /**
-     * @return StringLiteral
+     * @return string
      */
-    public function getCountry(): StringLiteral
+    public function getCountry(): string
     {
         return $this->country;
     }
 
     /**
-     * @param StringLiteral $country
+     * @param string $country
      * @return self
      */
-    public function setCountry(StringLiteral $country): self
+    public function setCountry(string $country): self
     {
         $this->country = $country;
 

@@ -4,13 +4,10 @@ declare(strict_types = 1);
 
 namespace Domain\Entity;
 
-use ValueObjects\Number\Integer;
-use ValueObjects\StringLiteral\StringLiteral;
-
 class Document
 {
     /**
-     * @var Integer
+     * @var int
      */
     private $id;
 
@@ -20,23 +17,23 @@ class Document
     private $type;
 
     /**
-     * @var StringLiteral
+     * @var string
      */
     private $number;
 
     /**
-     * @return Integer
+     * @return int
      */
-    public function getId(): Integer
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * @param Integer $id
+     * @param int $id
      * @return self
      */
-    public function setId(Integer $id): self
+    public function setId(int $id): self
     {
         $this->id = $id;
 
@@ -63,18 +60,18 @@ class Document
     }
 
     /**
-     * @return StringLiteral
+     * @return string
      */
-    public function getNumber(): StringLiteral
+    public function getNumber(): string
     {
         return $this->number;
     }
 
     /**
-     * @param StringLiteral $mask
+     * @param string $mask
      * @return Document
      */
-    public function setNumber(StringLiteral $mask): self
+    public function setNumber(string $mask): self
     {
         $this->number = $mask;
 
