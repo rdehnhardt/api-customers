@@ -36,7 +36,7 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testIdValue()
     {
-        $this->assertInstanceOf(DocumentType::class, $this->entity->setId(1));
+        $this->assertInstanceOf(DocumentType::class, $this->entity->setId(new Integer(1)));
         $this->assertInstanceOf(Integer::class, $this->entity->getId());
     }
 
@@ -45,8 +45,26 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testNameValue()
     {
-        $this->assertInstanceOf(DocumentType::class, $this->entity->setName('PASSPORT'));
+        $this->assertInstanceOf(DocumentType::class, $this->entity->setName(new StringLiteral('PASSPORT')));
         $this->assertInstanceOf(StringLiteral::class, $this->entity->getName());
+    }
+
+    /**
+     * Check mask methods should by StringLiteral
+     */
+    public function testMaskValue()
+    {
+        $this->assertInstanceOf(DocumentType::class, $this->entity->setMask(new StringLiteral('99.99.999')));
+        $this->assertInstanceOf(StringLiteral::class, $this->entity->getMask());
+    }
+
+    /**
+     * Check country methods should by StringLiteral
+     */
+    public function testCountryValue()
+    {
+        $this->assertInstanceOf(DocumentType::class, $this->entity->setCountry(new StringLiteral('BR')));
+        $this->assertInstanceOf(StringLiteral::class, $this->entity->getCountry());
     }
 
     /**
@@ -62,7 +80,7 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testCheckIfSlugIsSlugfyOfName()
     {
-        $this->entity->setName('CHECK SLUG');
+        $this->entity->setName(new StringLiteral('CHECK SLUG'));
 
         $this->assertSame(str_slug('CHECK SLUG'), $this->entity->getSlug()->toNative());
     }

@@ -3,6 +3,7 @@
 declare(strict_types = 1);
 
 use Carbon\Carbon;
+use Domain\Entity\Document;
 use Domain\Entity\Customer;
 use Domain\Entity\Gender;
 use ValueObjects\Number\Integer;
@@ -38,7 +39,7 @@ class CustomerEntityTest extends TestCase
      */
     public function testIdValue()
     {
-        $this->assertInstanceOf(Customer::class, $this->entity->setId(1));
+        $this->assertInstanceOf(Customer::class, $this->entity->setId(new Integer(1)));
         $this->assertInstanceOf(Integer::class, $this->entity->getId());
     }
 
@@ -47,7 +48,7 @@ class CustomerEntityTest extends TestCase
      */
     public function testCodeValue()
     {
-        $this->assertInstanceOf(Customer::class, $this->entity->setCode('XPTO'));
+        $this->assertInstanceOf(Customer::class, $this->entity->setCode(new StringLiteral('XPTO')));
         $this->assertInstanceOf(StringLiteral::class, $this->entity->getCode());
     }
 
@@ -56,7 +57,7 @@ class CustomerEntityTest extends TestCase
      */
     public function testNameValue()
     {
-        $this->assertInstanceOf(Customer::class, $this->entity->setName('MY NAME IS BOND!'));
+        $this->assertInstanceOf(Customer::class, $this->entity->setName(new StringLiteral('MY NAME IS BOND!')));
         $this->assertInstanceOf(StringLiteral::class, $this->entity->getName());
     }
 
@@ -80,5 +81,17 @@ class CustomerEntityTest extends TestCase
 
         $this->assertInstanceOf(Customer::class, $this->entity->setGender($gender));
         $this->assertInstanceOf(Gender::class, $this->entity->getGender());
+    }
+
+    /**
+     * Check id methods should by Gender
+     */
+    public function testDocumentsValue()
+    {
+        $document = $this->getMockBuilder(Document::class)->getMock();
+
+        $this->assertInstanceOf(Customer::class, $this->entity->addDocument($document));
+        $this->assertInstanceOf(Customer::class, $this->entity->removeDocument($document));
+        $this->assertTrue(is_array($this->entity->getDocuments()));
     }
 }

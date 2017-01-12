@@ -36,6 +36,11 @@ class Customer extends DataEntity
     private $gender;
 
     /**
+     * @var array
+     */
+    private $documents = [];
+
+    /**
      * @return Integer
      */
     public function getId(): Integer
@@ -44,12 +49,12 @@ class Customer extends DataEntity
     }
 
     /**
-     * @param int $id
+     * @param Integer $id
      * @return self
      */
-    public function setId(int $id): self
+    public function setId(Integer $id): self
     {
-        $this->id = new Integer($id);
+        $this->id = $id;
 
         return $this;
     }
@@ -63,12 +68,12 @@ class Customer extends DataEntity
     }
 
     /**
-     * @param string $code
+     * @param StringLiteral $code
      * @return self
      */
-    public function setCode(string $code): self
+    public function setCode(StringLiteral $code): self
     {
-        $this->code = new StringLiteral($code);
+        $this->code = $code;
 
         return $this;
     }
@@ -82,12 +87,12 @@ class Customer extends DataEntity
     }
 
     /**
-     * @param string $name
+     * @param StringLiteral $name
      * @return self
      */
-    public function setName(string $name): self
+    public function setName(StringLiteral $name): self
     {
-        $this->name = new StringLiteral($name);
+        $this->name = $name;
 
         return $this;
     }
@@ -126,6 +131,36 @@ class Customer extends DataEntity
     public function setGender(Gender $gender): self
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDocuments(): array
+    {
+        return $this->documents;
+    }
+
+    /**
+     * @param Document $document
+     * @return self
+     */
+    public function addDocument(Document $document): self
+    {
+        $this->documents[$document->getId()->toNative()] = $document;
+
+        return $this;
+    }
+
+    /**
+     * @param Document $document
+     * @return self
+     */
+    public function removeDocument(Document $document): self
+    {
+        unset($this->documents[$document->getId()->toNative()]);
 
         return $this;
     }

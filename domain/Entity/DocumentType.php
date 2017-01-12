@@ -43,12 +43,12 @@ class DocumentType
     }
 
     /**
-     * @param int $id
+     * @param Integer $id
      * @return self
      */
-    public function setId(int $id): self
+    public function setId(Integer $id): self
     {
-        $this->id = new Integer($id);
+        $this->id = $id;
 
         return $this;
     }
@@ -70,13 +70,13 @@ class DocumentType
     }
 
     /**
-     * @param string $name
+     * @param StringLiteral $name
      * @return self
      */
-    public function setName(string $name): self
+    public function setName(StringLiteral $name): self
     {
-        $this->slug = new StringLiteral(str_slug($name));
-        $this->name = new StringLiteral($name);
+        $this->slug = new StringLiteral(str_slug($name->toNative()));
+        $this->name = $name;
 
         return $this;
     }
@@ -90,12 +90,12 @@ class DocumentType
     }
 
     /**
-     * @param string $mask
+     * @param StringLiteral $mask
      * @return DocumentType
      */
-    public function setMask(string $mask): self
+    public function setMask(StringLiteral $mask): self
     {
-        $this->mask = new StringLiteral($mask);
+        $this->mask = $mask;
 
         return $this;
     }
@@ -109,12 +109,12 @@ class DocumentType
     }
 
     /**
-     * @param string $country
+     * @param StringLiteral $country
      * @return self
      */
-    public function setCountry(string $country): self
+    public function setCountry(StringLiteral $country): self
     {
-        $this->country = new StringLiteral($country);
+        $this->country = $country;
 
         return $this;
     }
