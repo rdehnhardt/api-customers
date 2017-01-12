@@ -132,47 +132,4 @@ class Customer extends DataEntity
 
         return $this;
     }
-
-    /**
-     * @return array
-     */
-    public function getDocuments(): array
-    {
-        return $this->documents;
-    }
-
-    /**
-     * @param Document $document
-     * @return self
-     */
-    public function addDocument(Document $document): self
-    {
-        $this->documents[$document->getId()] = $document;
-
-        return $this;
-    }
-
-    /**
-     * @param Document $document
-     * @return self
-     */
-    public function removeDocument(Document $document): self
-    {
-        unset($this->documents[$document->getId()]);
-
-        return $this;
-    }
-
-    /**
-     * @param string $slug
-     * @return Document
-     */
-    public function getDocumentBySlug(string $slug): Document
-    {
-        return current(array_map(function ($document) use ($slug) {
-            if ($document->getType()->getSlug() === $slug) {
-                return $document;
-            }
-        }, $this->documents));
-    }
 }

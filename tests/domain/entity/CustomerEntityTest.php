@@ -4,8 +4,6 @@ declare(strict_types = 1);
 
 use Carbon\Carbon;
 use Domain\Entity\Customer;
-use Domain\Entity\Document;
-use Domain\Entity\DocumentType;
 use Domain\Entity\Gender;
 
 class CustomerEntityTest extends TestCase
@@ -80,53 +78,5 @@ class CustomerEntityTest extends TestCase
 
         $this->assertInstanceOf(Customer::class, $this->entity->setGender($gender));
         $this->assertInstanceOf(Gender::class, $this->entity->getGender());
-    }
-
-    /**
-     * Check id methods should by Gender
-     */
-    public function testDocumentsValue()
-    {
-        $document = $this->getMockBuilder(Document::class)->getMock();
-
-        $this->assertInstanceOf(Customer::class, $this->entity->addDocument($document));
-        $this->assertInstanceOf(Customer::class, $this->entity->removeDocument($document));
-        $this->assertTrue(is_array($this->entity->getDocuments()));
-    }
-
-    /**
-     * Get document by slug
-     * @dataProvider provideDocuments
-     * @param $name
-     * @param $mask
-     * @param $country
-     * @param $number
-     */
-    public function testGetDocumentBySlug($name, $mask, $country, $number)
-    {
-        $type = new DocumentType();
-        $type->setName($name);
-        $type->setMask($mask);
-        $type->setCountry($country);
-
-        $document = new Document;
-        $document->setId(1);
-        $document->setType($type);
-        $document->setNumber($number);
-
-        $customer = new Customer();
-        $customer->addDocument($document);
-
-        $get = $customer->getDocumentBySlug(str_slug($name));
-
-        $this->assertSame(str_slug($name), $get->getType()->getSlug());
-    }
-
-    public function provideDocuments()
-    {
-        return [
-            ['CPF', '999.999.999-99', 'BR', '123.123.123-12'],
-            ['RG', '9999999999', 'BR', '1234567890'],
-        ];
     }
 }
