@@ -5,23 +5,21 @@ declare(strict_types = 1);
 namespace Domain\Entity;
 
 use Carbon\Carbon;
-use ValueObjects\Number\Integer;
-use ValueObjects\StringLiteral\StringLiteral;
 
 class Customer extends DataEntity
 {
     /**
-     * @var Integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var StringLiteral
+     * @var string
      */
     private $code;
 
     /**
-     * @var StringLiteral
+     * @var string
      */
     private $name;
 
@@ -38,7 +36,7 @@ class Customer extends DataEntity
     /**
      * @return Integer
      */
-    public function getId(): Integer
+    public function getId(): int
     {
         return $this->id;
     }
@@ -49,15 +47,15 @@ class Customer extends DataEntity
      */
     public function setId(int $id): self
     {
-        $this->id = new Integer($id);
+        $this->id = $id;
 
         return $this;
     }
 
     /**
-     * @return StringLiteral
+     * @return string
      */
-    public function getCode(): StringLiteral
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -68,15 +66,15 @@ class Customer extends DataEntity
      */
     public function setCode(string $code): self
     {
-        $this->code = new StringLiteral($code);
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * @return StringLiteral
+     * @return string
      */
-    public function getName(): StringLiteral
+    public function getName(): string
     {
         return $this->name;
     }
@@ -87,7 +85,7 @@ class Customer extends DataEntity
      */
     public function setName(string $name): self
     {
-        $this->name = new StringLiteral($name);
+        $this->name = $name;
 
         return $this;
     }

@@ -2,12 +2,12 @@
 
 declare(strict_types = 1);
 
-use Domain\Entity\DocumentType;
+use Domain\Entity\PhoneType;
 
-class DocumentTypeEntityTest extends TestCase
+class PhoneTypeEntityTest extends TestCase
 {
     /**
-     * @var DocumentType
+     * @var PhoneType
      */
     private $entity;
 
@@ -18,7 +18,7 @@ class DocumentTypeEntityTest extends TestCase
     {
         parent::setUp();
 
-        $this->entity = new DocumentType();
+        $this->entity = new PhoneType();
     }
 
     /**
@@ -26,7 +26,7 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testClassExists()
     {
-        $this->assertInstanceOf(DocumentType::class, new DocumentType);
+        $this->assertInstanceOf(PhoneType::class, new PhoneType);
     }
 
     /**
@@ -34,7 +34,7 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testIdValue()
     {
-        $this->assertInstanceOf(DocumentType::class, $this->entity->setId(1));
+        $this->assertInstanceOf(PhoneType::class, $this->entity->setId(1));
         $this->assertTrue(is_int($this->entity->getId()));
     }
 
@@ -43,26 +43,17 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testNameValue()
     {
-        $this->assertInstanceOf(DocumentType::class, $this->entity->setName('PASSPORT'));
+        $this->assertInstanceOf(PhoneType::class, $this->entity->setName('CEL PHONE'));
         $this->assertTrue(is_string($this->entity->getName()));
     }
 
     /**
-     * Check mask methods should by StringLiteral
+     * Check name methods should by StringLiteral
      */
     public function testMaskValue()
     {
-        $this->assertInstanceOf(DocumentType::class, $this->entity->setMask('99.99.999'));
+        $this->assertInstanceOf(PhoneType::class, $this->entity->setMask('99 9999 9999'));
         $this->assertTrue(is_string($this->entity->getMask()));
-    }
-
-    /**
-     * Check country methods should by StringLiteral
-     */
-    public function testCountryValue()
-    {
-        $this->assertInstanceOf(DocumentType::class, $this->entity->setCountry('BR'));
-        $this->assertTrue(is_string($this->entity->getCountry()));
     }
 
     /**
@@ -70,7 +61,7 @@ class DocumentTypeEntityTest extends TestCase
      */
     public function testCheckSetSlugNotExists()
     {
-        $this->assertFalse(method_exists(DocumentType::class, 'setSlug'));
+        $this->assertFalse(method_exists(PhoneType::class, 'setSlug'));
     }
 
     /**

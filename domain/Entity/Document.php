@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Domain\Entity;
 
-class Gender extends DataEntity
+class Document
 {
     /**
      * @var int
@@ -12,14 +12,14 @@ class Gender extends DataEntity
     private $id;
 
     /**
-     * @var string
+     * @var DocumentType
      */
-    private $name;
+    private $type;
 
     /**
      * @var string
      */
-    private $slug;
+    private $number;
 
     /**
      * @return int
@@ -41,21 +41,20 @@ class Gender extends DataEntity
     }
 
     /**
-     * @return string
+     * @return DocumentType
      */
-    public function getName(): string
+    public function getType(): DocumentType
     {
-        return $this->name;
+        return $this->type;
     }
 
     /**
-     * @param string $name
+     * @param DocumentType $type
      * @return self
      */
-    public function setName(string $name): self
+    public function setType(DocumentType $type): self
     {
-        $this->slug = str_slug($name);
-        $this->name = $name;
+        $this->type = $type;
 
         return $this;
     }
@@ -63,8 +62,19 @@ class Gender extends DataEntity
     /**
      * @return string
      */
-    public function getSlug(): string
+    public function getNumber(): string
     {
-        return $this->slug;
+        return $this->number;
+    }
+
+    /**
+     * @param string $mask
+     * @return Document
+     */
+    public function setNumber(string $mask): self
+    {
+        $this->number = $mask;
+
+        return $this;
     }
 }

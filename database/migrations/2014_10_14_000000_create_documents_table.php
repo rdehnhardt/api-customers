@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDocumentTypesTable extends Migration
+class CreateDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,16 +15,17 @@ class CreateDocumentTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('document_types', function (Blueprint $table) {
+        Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('customer_id')->unsigned();
+            $table->integer('document_type_id')->unsigned();
             $table->string('slug');
             $table->string('name');
-            $table->string('mask');
-            $table->string('country');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->unique(['slug', 'country']);
+            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('document_type_id')->references('id')->on('document_types');
         });
     }
 
@@ -35,6 +36,6 @@ class CreateDocumentTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('document_types');
+        Schema::dropIfExists('documents');
     }
 }

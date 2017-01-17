@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Domain\Entity;
 
-class Gender extends DataEntity
+class Internet
 {
     /**
      * @var int
@@ -12,14 +12,14 @@ class Gender extends DataEntity
     private $id;
 
     /**
-     * @var string
+     * @var InternetType
      */
-    private $name;
+    private $type;
 
     /**
      * @var string
      */
-    private $slug;
+    private $address;
 
     /**
      * @return int
@@ -41,21 +41,20 @@ class Gender extends DataEntity
     }
 
     /**
-     * @return string
+     * @return InternetType
      */
-    public function getName(): string
+    public function getType(): InternetType
     {
-        return $this->name;
+        return $this->type;
     }
 
     /**
-     * @param string $name
+     * @param InternetType $type
      * @return self
      */
-    public function setName(string $name): self
+    public function setType(InternetType $type): self
     {
-        $this->slug = str_slug($name);
-        $this->name = $name;
+        $this->type = $type;
 
         return $this;
     }
@@ -63,8 +62,19 @@ class Gender extends DataEntity
     /**
      * @return string
      */
-    public function getSlug(): string
+    public function getAddress(): string
     {
-        return $this->slug;
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     * @return Internet
+     */
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
     }
 }

@@ -5,8 +5,6 @@ declare(strict_types = 1);
 use Carbon\Carbon;
 use Domain\Entity\Customer;
 use Domain\Entity\Gender;
-use ValueObjects\Number\Integer;
-use ValueObjects\StringLiteral\StringLiteral;
 
 class CustomerEntityTest extends TestCase
 {
@@ -39,7 +37,7 @@ class CustomerEntityTest extends TestCase
     public function testIdValue()
     {
         $this->assertInstanceOf(Customer::class, $this->entity->setId(1));
-        $this->assertInstanceOf(Integer::class, $this->entity->getId());
+        $this->assertTrue(is_int($this->entity->getId()));
     }
 
     /**
@@ -48,7 +46,7 @@ class CustomerEntityTest extends TestCase
     public function testCodeValue()
     {
         $this->assertInstanceOf(Customer::class, $this->entity->setCode('XPTO'));
-        $this->assertInstanceOf(StringLiteral::class, $this->entity->getCode());
+        $this->assertTrue(is_string($this->entity->getCode()));
     }
 
     /**
@@ -57,7 +55,7 @@ class CustomerEntityTest extends TestCase
     public function testNameValue()
     {
         $this->assertInstanceOf(Customer::class, $this->entity->setName('MY NAME IS BOND!'));
-        $this->assertInstanceOf(StringLiteral::class, $this->entity->getName());
+        $this->assertTrue(is_string($this->entity->getName()));
     }
 
     /**

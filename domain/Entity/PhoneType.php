@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Domain\Entity;
 
-class DocumentType
+class PhoneType
 {
     /**
      * @var int
@@ -25,11 +25,6 @@ class DocumentType
      * @var string
      */
     private $mask;
-
-    /**
-     * @var string
-     */
-    private $country;
 
     /**
      * @return int
@@ -88,30 +83,11 @@ class DocumentType
 
     /**
      * @param string $mask
-     * @return DocumentType
+     * @return self
      */
     public function setMask(string $mask): self
     {
         $this->mask = $mask;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCountry(): string
-    {
-        return $this->country;
-    }
-
-    /**
-     * @param string $country
-     * @return self
-     */
-    public function setCountry(string $country): self
-    {
-        $this->country = $country;
 
         return $this;
     }

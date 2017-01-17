@@ -2,12 +2,12 @@
 
 declare(strict_types = 1);
 
-use Domain\Entity\Gender;
+use Domain\Entity\AddressType;
 
-class MethodsExistsInGenderTest extends TestCase
+class AddressTypeEntityTest extends TestCase
 {
     /**
-     * @var Gender
+     * @var AddressType
      */
     private $entity;
 
@@ -18,7 +18,7 @@ class MethodsExistsInGenderTest extends TestCase
     {
         parent::setUp();
 
-        $this->entity = new Gender();
+        $this->entity = new AddressType();
     }
 
     /**
@@ -26,7 +26,7 @@ class MethodsExistsInGenderTest extends TestCase
      */
     public function testClassExists()
     {
-        $this->assertInstanceOf(Gender::class, new Gender);
+        $this->assertInstanceOf(AddressType::class, new AddressType);
     }
 
     /**
@@ -34,7 +34,7 @@ class MethodsExistsInGenderTest extends TestCase
      */
     public function testIdValue()
     {
-        $this->assertInstanceOf(Gender::class, $this->entity->setId(1));
+        $this->assertInstanceOf(AddressType::class, $this->entity->setId(1));
         $this->assertTrue(is_int($this->entity->getId()));
     }
 
@@ -43,7 +43,7 @@ class MethodsExistsInGenderTest extends TestCase
      */
     public function testNameValue()
     {
-        $this->assertInstanceOf(Gender::class, $this->entity->setName('PASSPORT'));
+        $this->assertInstanceOf(AddressType::class, $this->entity->setName('PASSPORT'));
         $this->assertTrue(is_string($this->entity->getName()));
     }
 
@@ -52,7 +52,7 @@ class MethodsExistsInGenderTest extends TestCase
      */
     public function testCheckSetSlugNotExists()
     {
-        $this->assertFalse(method_exists(Gender::class, 'setSlug'));
+        $this->assertFalse(method_exists(AddressType::class, 'setSlug'));
     }
 
     /**
