@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Domain\Entity;
 
-class InternetType
+class SocialNetworkType
 {
     /**
      * @var int
@@ -22,6 +22,11 @@ class InternetType
     private $name;
 
     /**
+     * @var string
+     */
+    private $icon;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -31,7 +36,7 @@ class InternetType
 
     /**
      * @param int $id
-     * @return self
+     * @return SocialNetworkType
      */
     public function setId(int $id): self
     {
@@ -58,12 +63,31 @@ class InternetType
 
     /**
      * @param string $name
-     * @return self
+     * @return SocialNetworkType
      */
     public function setName(string $name): self
     {
         $this->slug = str_slug($name);
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIcon(): string
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param string $icon
+     * @return self
+     */
+    public function setIcon(string $icon): self
+    {
+        $this->icon = $icon;
 
         return $this;
     }

@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Domain\Entity;
 
-class Internet
+class SocialNetwork
 {
     /**
      * @var int
@@ -12,7 +12,7 @@ class Internet
     private $id;
 
     /**
-     * @var InternetType
+     * @var SocialNetworkType
      */
     private $type;
 
@@ -31,7 +31,7 @@ class Internet
 
     /**
      * @param int $id
-     * @return self
+     * @return SocialNetwork
      */
     public function setId(int $id): self
     {
@@ -41,18 +41,18 @@ class Internet
     }
 
     /**
-     * @return InternetType
+     * @return SocialNetworkType
      */
-    public function getType(): InternetType
+    public function getType(): SocialNetworkType
     {
         return $this->type;
     }
 
     /**
-     * @param InternetType $type
-     * @return self
+     * @param SocialNetworkType $type
+     * @return SocialNetwork
      */
-    public function setType(InternetType $type): self
+    public function setType(SocialNetworkType $type): self
     {
         $this->type = $type;
 
@@ -69,7 +69,7 @@ class Internet
 
     /**
      * @param string $address
-     * @return Internet
+     * @return SocialNetwork
      */
     public function setAddress(string $address): self
     {

@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Domain\Entity;
 
 use Carbon\Carbon;
+use Domain\ValueObject\Email;
 
 class Customer extends DataEntity
 {
@@ -24,9 +25,19 @@ class Customer extends DataEntity
     private $name;
 
     /**
+     * @var Email
+     */
+    private $email;
+
+    /**
+     * @var string
+     */
+    private $password;
+
+    /**
      * @var Carbon
      */
-    private $born_in;
+    private $bornIn;
 
     /**
      * @var Gender
@@ -91,20 +102,58 @@ class Customer extends DataEntity
     }
 
     /**
+     * @return Email
+     */
+    public function getEmail(): Email
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param Email $email
+     * @return self
+     */
+    public function setEmail(Email $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     * @return self
+     */
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
      * @return Carbon
      */
     public function getBornIn(): Carbon
     {
-        return $this->born_in;
+        return $this->bornIn;
     }
 
     /**
-     * @param Carbon $born_in
+     * @param Carbon $bornIn
      * @return self
      */
-    public function setBornIn(Carbon $born_in): self
+    public function setBornIn(Carbon $bornIn): self
     {
-        $this->born_in = $born_in;
+        $this->bornIn = $bornIn;
 
         return $this;
     }
