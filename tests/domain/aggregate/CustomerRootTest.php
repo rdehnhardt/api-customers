@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 use Domain\Aggregate\CustomerRoot;
 use Domain\Entity\Address;
+use Domain\Entity\Document;
 use Domain\Entity\SocialNetwork;
 
 class CustomerRootTest extends TestCase
@@ -45,11 +46,22 @@ class CustomerRootTest extends TestCase
     /**
      * Check internets methods
      */
-    public function testInternetsValue()
+    public function testSocialNetworksValue()
     {
-        $internet = $this->getMockBuilder(SocialNetwork::class)->getMock();
+        $socialNetwork = $this->getMockBuilder(SocialNetwork::class)->getMock();
 
-        $this->assertInstanceOf(CustomerRoot::class, $this->aggregate->addInternet($internet));
-        $this->assertTrue(is_array($this->aggregate->getInternets()));
+        $this->assertInstanceOf(CustomerRoot::class, $this->aggregate->addSocialNetwork($socialNetwork));
+        $this->assertTrue(is_array($this->aggregate->getSocialNetworks()));
+    }
+
+    /**
+     * Check internets methods
+     */
+    public function testDocumentsValue()
+    {
+        $document = $this->getMockBuilder(Document::class)->getMock();
+
+        $this->assertInstanceOf(CustomerRoot::class, $this->aggregate->addDocument($document));
+        $this->assertTrue(is_array($this->aggregate->getDocuments()));
     }
 }

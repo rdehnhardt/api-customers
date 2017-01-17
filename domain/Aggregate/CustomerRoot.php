@@ -6,6 +6,7 @@ namespace Domain\Aggregate;
 
 use Domain\Entity\Address;
 use Domain\Entity\Customer;
+use Domain\Entity\Document;
 use Domain\Entity\SocialNetwork;
 
 class CustomerRoot extends Customer
@@ -19,6 +20,11 @@ class CustomerRoot extends Customer
      * @var array SocialNetwork
      */
     private $socialNetworks = [];
+
+    /**
+     * @var array SocialNetwork
+     */
+    private $documents = [];
 
     /**
      * @return mixed
@@ -51,9 +57,28 @@ class CustomerRoot extends Customer
      * @param SocialNetwork $socialNetwork
      * @return self
      */
-    public function addInternet(SocialNetwork $socialNetwork): self
+    public function addSocialNetwork(SocialNetwork $socialNetwork): self
     {
         $this->socialNetworks[] = $socialNetwork;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDocuments(): array
+    {
+        return $this->documents;
+    }
+
+    /**
+     * @param Document $document
+     * @return self
+     */
+    public function addDocument(Document $document): self
+    {
+        $this->documents[] = $document;
 
         return $this;
     }
