@@ -9,8 +9,8 @@ services:
     volumes:
       - ./:/var/www
     links:
-      - php
-  php:
+      - app
+  app:
     build:
       context: ./
       dockerfile: docker/php.docker
