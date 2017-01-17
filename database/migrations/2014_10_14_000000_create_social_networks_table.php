@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInternetTypesTable extends Migration
+class CreateInternetTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,12 +15,17 @@ class CreateInternetTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('internet_types', function (Blueprint $table) {
+        Schema::create('social_networks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug')->unique();
+            $table->integer('customer_id')->unsigned();
+            $table->integer('social_network_type_id')->unsigned();
+            $table->string('slug');
             $table->string('name');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('social_network_type_id')->references('id')->on('social_network_types');
         });
     }
 
@@ -31,6 +36,6 @@ class CreateInternetTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('internet_types');
+        Schema::dropIfExists('social_networks');
     }
 }

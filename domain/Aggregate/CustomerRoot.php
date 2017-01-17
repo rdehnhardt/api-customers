@@ -6,7 +6,7 @@ namespace Domain\Aggregate;
 
 use Domain\Entity\Address;
 use Domain\Entity\Customer;
-use Domain\Entity\Internet;
+use Domain\Entity\SocialNetwork;
 
 class CustomerRoot extends Customer
 {
@@ -48,10 +48,10 @@ class CustomerRoot extends Customer
     }
 
     /**
-     * @param Internet $internets
+     * @param SocialNetwork $internets
      * @return self
      */
-    public function addInternet(Internet $internets): self
+    public function addInternet(SocialNetwork $internets): self
     {
         $this->internets[] = $internets;
 

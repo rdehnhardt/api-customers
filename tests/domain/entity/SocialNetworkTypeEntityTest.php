@@ -2,12 +2,12 @@
 
 declare(strict_types = 1);
 
-use Domain\Entity\InternetType;
+use Domain\Entity\SocialNetworkType;
 
-class InternetTypeEntityTest extends TestCase
+class SocialNetworkTypeEntityTest extends TestCase
 {
     /**
-     * @var InternetType
+     * @var SocialNetworkType
      */
     private $entity;
 
@@ -18,7 +18,7 @@ class InternetTypeEntityTest extends TestCase
     {
         parent::setUp();
 
-        $this->entity = new InternetType();
+        $this->entity = new SocialNetworkType();
     }
 
     /**
@@ -26,7 +26,7 @@ class InternetTypeEntityTest extends TestCase
      */
     public function testClassExists()
     {
-        $this->assertInstanceOf(InternetType::class, new InternetType);
+        $this->assertInstanceOf(SocialNetworkType::class, new SocialNetworkType);
     }
 
     /**
@@ -34,7 +34,7 @@ class InternetTypeEntityTest extends TestCase
      */
     public function testIdValue()
     {
-        $this->assertInstanceOf(InternetType::class, $this->entity->setId(1));
+        $this->assertInstanceOf(SocialNetworkType::class, $this->entity->setId(1));
         $this->assertTrue(is_int($this->entity->getId()));
     }
 
@@ -43,8 +43,17 @@ class InternetTypeEntityTest extends TestCase
      */
     public function testNameValue()
     {
-        $this->assertInstanceOf(InternetType::class, $this->entity->setName('PASSPORT'));
+        $this->assertInstanceOf(SocialNetworkType::class, $this->entity->setName('PASSPORT'));
         $this->assertTrue(is_string($this->entity->getName()));
+    }
+
+    /**
+     * Check name methods should by StringLiteral
+     */
+    public function testIconValue()
+    {
+        $this->assertInstanceOf(SocialNetworkType::class, $this->entity->setIcon('PASSPORT'));
+        $this->assertTrue(is_string($this->entity->getIcon()));
     }
 
     /**
@@ -52,7 +61,7 @@ class InternetTypeEntityTest extends TestCase
      */
     public function testCheckSetSlugNotExists()
     {
-        $this->assertFalse(method_exists(InternetType::class, 'setSlug'));
+        $this->assertFalse(method_exists(SocialNetworkType::class, 'setSlug'));
     }
 
     /**
