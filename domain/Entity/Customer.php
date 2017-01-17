@@ -34,11 +34,6 @@ class Customer extends DataEntity
     private $gender;
 
     /**
-     * @var array
-     */
-    private $documents = [];
-
-    /**
      * @return Integer
      */
     public function getId(): int
