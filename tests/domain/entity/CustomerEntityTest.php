@@ -5,6 +5,7 @@ declare(strict_types = 1);
 use Carbon\Carbon;
 use Domain\Entity\Customer;
 use Domain\Entity\Gender;
+use Domain\ValueObject\Email;
 
 class CustomerEntityTest extends TestCase
 {
@@ -67,6 +68,24 @@ class CustomerEntityTest extends TestCase
 
         $this->assertInstanceOf(Customer::class, $this->entity->setBornIn($bornIn));
         $this->assertInstanceOf(Carbon::class, $this->entity->getBornIn());
+    }
+
+    /**
+     * Check id methods should by Email
+     */
+    public function testEmailValue()
+    {
+        $this->assertInstanceOf(Customer::class, $this->entity->setEmail(new Email('email@domain.com')));
+        $this->assertInstanceOf(Email::class, $this->entity->getEmail());
+    }
+
+    /**
+     * Check id methods should by string
+     */
+    public function testPasswordValue()
+    {
+        $this->assertInstanceOf(Customer::class, $this->entity->setPassword('secret'));
+        $this->assertTrue(is_string($this->entity->getPassword()));
     }
 
     /**
