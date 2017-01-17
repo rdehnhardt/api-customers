@@ -16,9 +16,9 @@ class CustomerRoot extends Customer
     private $addresses = [];
 
     /**
-     * @var array Internet
+     * @var array SocialNetwork
      */
-    private $internets = [];
+    private $socialNetworks = [];
 
     /**
      * @return mixed
@@ -42,18 +42,18 @@ class CustomerRoot extends Customer
     /**
      * @return array
      */
-    public function getInternets(): array
+    public function getSocialNetworks(): array
     {
-        return $this->internets;
+        return $this->socialNetworks;
     }
 
     /**
-     * @param SocialNetwork $internets
+     * @param SocialNetwork $socialNetwork
      * @return self
      */
-    public function addInternet(SocialNetwork $internets): self
+    public function addInternet(SocialNetwork $socialNetwork): self
     {
-        $this->internets[] = $internets;
+        $this->socialNetworks[] = $socialNetwork;
 
         return $this;
     }

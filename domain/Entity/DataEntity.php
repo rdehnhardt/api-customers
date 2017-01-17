@@ -9,28 +9,28 @@ abstract class DataEntity
     /**
      * @var Carbon
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * @var Carbon
      */
-    private $updated_at;
+    private $updatedAt;
 
     /**
      * @return Carbon
      */
     public function getCreatedAt(): Carbon
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
     /**
-     * @param Carbon $created_at
+     * @param Carbon $createdAt
      * @return self
      */
-    public function setCreatedAt(Carbon $created_at): self
+    public function setCreatedAt(Carbon $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -40,16 +40,16 @@ abstract class DataEntity
      */
     public function getUpdatedAt(): Carbon
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 
     /**
-     * @param Carbon $updated_at
+     * @param Carbon $updatedAt
      * @return self
      */
-    public function setUpdatedAt(Carbon $updated_at): self
+    public function setUpdatedAt(Carbon $updatedAt): self
     {
-        $this->updated_at = $updated_at;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

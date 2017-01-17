@@ -54,7 +54,7 @@ class Address
     /**
      * @var string
      */
-    private $zip_code;
+    private $zipCode;
 
     /**
      * @var string
@@ -237,16 +237,16 @@ class Address
      */
     public function getZipCode(): string
     {
-        return $this->zip_code;
+        return $this->zipCode;
     }
 
     /**
-     * @param string $zip_code
+     * @param string $zipCode
      * @return self
      */
-    public function setZipCode(string $zip_code): self
+    public function setZipCode(string $zipCode): self
     {
-        $this->zip_code = $zip_code;
+        $this->zipCode = $zipCode;
 
         return $this;
     }

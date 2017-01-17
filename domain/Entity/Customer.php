@@ -26,7 +26,7 @@ class Customer extends DataEntity
     /**
      * @var Carbon
      */
-    private $born_in;
+    private $bornIn;
 
     /**
      * @var Gender
@@ -95,16 +95,16 @@ class Customer extends DataEntity
      */
     public function getBornIn(): Carbon
     {
-        return $this->born_in;
+        return $this->bornIn;
     }
 
     /**
-     * @param Carbon $born_in
+     * @param Carbon $bornIn
      * @return self
      */
-    public function setBornIn(Carbon $born_in): self
+    public function setBornIn(Carbon $bornIn): self
     {
-        $this->born_in = $born_in;
+        $this->bornIn = $bornIn;
 
         return $this;
     }
